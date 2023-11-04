@@ -68,8 +68,8 @@
   </div>
 </template>
 
-<script>
-import axios from 'axios'
+<script
+>
 
 export default {
   name: 'CurrencyConverter',
@@ -87,9 +87,20 @@ export default {
   },
   methods: {
     async fetchExchangeRates() {
-      const response = await axios.get('https://cdn.taux.live/api/latest.json')
-      this.exchangeRates = response.data.rates
-    },
+    try {
+      const response = await fetch('https://cdn.taux.live/api/latest.json');
+      
+      if (!response.ok) {
+        throw new Error('Erreur lors de la récupération des taux de change');
+      }
+
+      const data = await response.json();
+      this.exchangeRates = data.rates;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
     async convertCurrency() {
       const rate = this.exchangeRates[this.currency2] / this.exchangeRates[this.currency1]
       this.amount2 = this.amount1 * rate
