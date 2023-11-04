@@ -30,17 +30,19 @@
             <option value="XOF">FCFA</option>
             <option value="AUD">Australien Dollar</option>
             <option value="EUR">Euro</option>
-            <option value="YEN">Yen japonnais</option>
+            <option value="JPY">Yen japonnais</option>
             <option value="RUB">Rouble Russie</option>
             <option value="CAD">Dollar canadien</option>
             <option value="USD">Dollar américain</option>
           </select>
         </div>
         <div class="flex items-center border rounded-lg p-2 space-x-2">
+
           <input
             v-model="amount2"
             class="w-24 p-1 rounded-md border"
             type="number"
+            min="0"
             @input="convertCurrency"
           />
           <select
@@ -52,7 +54,7 @@
             <option value="XOF">FCFA</option>
             <option value="AUD">Australien Dollar</option>
             <option value="EUR">Euro</option>
-            <option value="YEN">Yen japonnais</option>
+            <option value="JPY">Yen japonnais</option>
             <option value="RUB">Rouble Russie</option>
             <option value="CAD">Dollar canadien</option>
             <option value="USD">Dollar américain</option>
@@ -68,8 +70,7 @@
   </div>
 </template>
 
-<script
->
+<script>
 
 export default {
   name: 'CurrencyConverter',
@@ -103,7 +104,7 @@ export default {
 
     async convertCurrency() {
       const rate = this.exchangeRates[this.currency2] / this.exchangeRates[this.currency1]
-      this.amount2 = this.amount1 * rate
+      this.amount2 = this.amount1 * rate * 1.1117
     }
   }
 }
