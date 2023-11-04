@@ -18,6 +18,7 @@
             v-model="amount1"
             class="w-24 p-1 rounded-md border"
             type="number"
+            min="0"
             @input="convertCurrency"
           />
           <select
@@ -67,7 +68,7 @@
   </div>
 </template>
 
-<script  >
+<script>
 import axios from 'axios'
 
 export default {
