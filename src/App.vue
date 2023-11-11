@@ -104,7 +104,7 @@ export default {
 
     async convertCurrency() {
       const rate = this.exchangeRates[this.currency2] / this.exchangeRates[this.currency1]
-      this.amount2 = this.amount1 * rate * 1.1117
+      this.amount2 = this.amount1 * rate * 0.8883
     }
   }
 }
